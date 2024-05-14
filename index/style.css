@@ -1,0 +1,96 @@
+body{
+    text-align:center;
+    background:#e6e3e3;
+    color:#333;
+    }
+    
+    *{border:0;padding:0;margin:0;text-decoration:none;box-sizing:border-box;}
+    
+    p{word-wrap: break-word;}
+    
+    .left{text-align:left}
+    .center{text-align:center}
+    
+    main{
+    padding-top:2em;
+    margin:0 0;
+    }
+    
+    h1{
+    display:inline;
+    font-family: "Nico Moji";
+    font-size:60px;
+    color:#333;
+    font-weight:normal;
+    }
+    
+    h1 a{
+    color:#646464;
+    }
+    
+    h1 a:hover{
+    color:#646464;
+    text-decoration:none;
+    }
+    
+    .cop{
+    font-family: 'Kosugi Maru', sans-serif;
+    font-size:25px;
+    width:100%;
+    text-align:center;
+    padding:0.8em;
+    background: #f3c4c3;
+    margin:1em auto;
+    }
+    
+    .cop p{
+    animation: fadeIn 1s ease 0.3s 1 normal backwards;
+    }
+    
+    
+    .center{
+    margin:0 auto;
+    }
+    
+    .wel{
+    display: inline-block;
+    max-width:70%;
+    font-size:90%;
+    line-height:2em;
+    color:#000;
+    margin-bottom:1.5em;
+    text-align:left;
+    }
+    
+    .mente{
+    font-size:100%;
+    color:#000;
+    }
+    
+    .enter{
+    width:7em;
+    font-family: "Nico Moji";
+    font-weight:normal;
+    color:#333;
+    font-size:30px;
+    background:#f3c4c3;
+    border-radius:10px;
+    padding:0.5em 0;
+    text-align:center;
+    margin:1em auto;
+    }
+    
+    a{
+    color:#333;
+    }
+    
+    a:hover{
+    color:#333;
+    text-decoration:none;
+    }
+    
+    
+    
+    
+    
+    
