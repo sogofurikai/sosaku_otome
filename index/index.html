@@ -1,28 +1,1221 @@
-<!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta http-equiv="content-type" content="test/html; charset=utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
     <title>創作乙女ゲームサーチ</title>
-    <meta name="description" content="創作乙女ゲームに関連するサイトが登録できる検索サーチエンジン">
-    <meta property="og:title" content="創作乙女ゲームサーチ-INDEX">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sosakuotome.sakura.ne.jp/">
-    <meta property="og:description" content="「創作乙女ゲームサーチ」は創作乙女ゲームに関連するサイトのサーチです。">
-    <meta property="og:site_name" content="創作乙女ゲームサーチ">
-    <link rel="stylesheet" href="style.css" type="text/css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script type="text/javascript" src="function.js"></script>
+  </head>
+  <body
+    bgcolor="#EEEFF6"
+    text="#000000"
+    link="#190a0a"
+    vlink="#190a0a"
+    alink="#190a0a"
+  >
     <main>
-        <h1>創作乙女ゲームサーチ</h1>
-        <div class="center">
-            <div class="wel">
-                創作乙女ゲームサーチは「乙女ゲーム」を使っている創作系サイト、「創作乙女ゲーム」に関するサイトが集まる登録型サーチです。<br>
-                現在仮運営中
+      <header>
+        <font size="5" color="#190a0a"><b>創作乙女ゲームサーチ</b></font>
+
+        <a href="./index.html">トップ</a>
+        <a href="./ps_search.cgi?act=new">新着</a>
+        <a href="./ps_search.cgi?act=change">更新</a>
+        <a href="./ps_user.cgi?act=reg1">新規登録</a>
+      </header>
+
+      <br />
+      <!-- 検索条件 -->
+      <div bgcolor="#fff">
+        <div align="center">
+          <div>
+            <a href="https://forms.gle/3Fckwq53C1EDQXX49"
+              >ご意見や欲しいジャンルがありましたらアンケートの回答をお願いします</a
+            ><br />
+            <a href="https://github.com/sogofurikai/sosaku_otome"
+              >サイトのデザインや処理についてのPRを作成することができます</a
+            >
+          </div>
+          <div class="find-form">
+            <tr>
+              <form method="get" action="./ps_search.cgi" onsubmit="set()">
+                <input type="text" name="word" value="" size="20" />
+                <input type="submit" value="検索" />
+                <select name="cond">
+                  <option value="0" selected>すべてのワードを含む</option>
+                  <option value="1">いずれかのワードを含む</option>
+                </select>
+
+                <input type="hidden" name="line" value="" />
+                <input type="hidden" name="indi" value="" />
+                <input type="hidden" name="act" value="search" />
+                <div
+                  style="text-align: left; display: none"
+                  id="selected-category"
+                ></div>
+              </form>
+            </tr>
+          </div>
+        </div>
+        <br />
+        <!-- カテゴリ -->
+        <div class="category" id="search-category">
+          <input type="hidden" name="category-max-length" value="5" />
+          <!-- ジャンル -->
+          <div class="category-area">
+            <p>
+              <b><a href="./ps_search.cgi?act=cat&cat=01">ジャンル</a></b>
+            </p>
+            <div class="category-all">
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="01-01" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=01-01">アクション</a
+                  ><span data-category="01-01"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="01-02" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=01-02">アドベンチャー</a
+                  ><span data-category="01-02"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="01-03" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=01-03"
+                    >シミュレーション</a
+                  ><span data-category="01-03"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="01-04" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=01-04">ノベル</a
+                  ><span data-category="01-04"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="01-05" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=01-05">RPG</a
+                  ><span data-category="01-05"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="01-06" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=01-06">テーブル</a
+                  ><span data-category="01-06"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="01-07" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=01-07">ゲームブック</a
+                  ><span data-category="01-07"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="01-08" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=01-08">タイピング</a
+                  ><span data-category="01-08"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="01-09" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=01-09">シューティング</a
+                  ><span data-category="01-09"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="01-10" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=01-10">パズル</a
+                  ><span data-category="01-10"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="01-11" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=01-11">そのほか</a
+                  ><span data-category="01-11"></span>
+                </div>
+              </div>
             </div>
+          </div>
+          <!-- 配布状態 -->
+          <div class="category-area">
+            <p>
+              <b><a href="./ps_search.cgi?act=cat&cat=02-01">配布状態</a></b>
+            </p>
+            <div class="category-all">
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="02-02" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=02-02">完成品あり</a
+                  ><span data-category="02-02"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="02-03" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=02-03"
+                    >体験版・デモあり</a
+                  ><span data-category="02-03"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="02-04" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=02-04">連載中</a
+                  ><span data-category="02-04"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="02-05" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=02-05">準備中</a
+                  ><span data-category="02-05"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- プレイ時間 -->
+          <div class="category-area">
+            <b><a href="./ps_search.cgi?act=cat&cat=07">プレイ時間</a></b>
+            <div class="category-all">
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="07-01" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=07-01">～10分</a
+                  ><span data-category="07-01"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="07-02" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=07-02">10～30分</a
+                  ><span data-category="07-02"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="07-03" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=07-03">30～60分</a
+                  ><span data-category="07-03"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="07-04" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=07-04">1～3時間</a
+                  ><span data-category="07-04"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="07-05" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=07-05">3～5時間</a
+                  ><span data-category="07-05"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="07-06" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=07-06">5～8時間</a
+                  ><span data-category="07-06"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="07-07" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=07-07">8～15時間</a
+                  ><span data-category="07-07"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="07-08" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=07-08">15～30時間</a
+                  ><span data-category="07-08"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="07-09" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=07-09">30時間～</a
+                  ><span data-category="07-09"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 配布形態 -->
+          <div class="category-area">
+            <b><a href="./ps_search.cgi?act=cat&cat=04">配布形態</a></b>
+            <div class="category-all">
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="04-01" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=04-01">フリーウェア</a
+                  ><span data-category="04-01"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="04-02" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=04-02">体験版</a
+                  ><span data-category="04-02"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="04-03" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=04-03"
+                    >ダウンロード販売</a
+                  ><span data-category="04-03"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="04-04" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=04-04">パッケージ販売</a
+                  ><span data-category="04-04"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="04-05" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=04-05">そのほか</a
+                  ><span data-category="04-05"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 使用ツール -->
+          <div class="category-area">
+            <b><a href="./ps_search.cgi?act=cat&cat=06">使用ツール</a></b>
+            <div class="category-all">
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-01" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-01">Godot</a
+                  ><span data-category="06-01"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-02" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-02">GBStudio</a
+                  ><span data-category="06-02"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-03" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-03">Unity</a
+                  ><span data-category="06-03"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-04" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-04">Livemaker</a
+                  ><span data-category="06-04"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-05" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-05">NScript</a
+                  ><span data-category="06-05"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-06" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-06">Polaris Engine</a
+                  ><span data-category="06-06"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-07" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-07">Ren'py</a
+                  ><span data-category="06-07"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-08" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-08">SRPG Studio</a
+                  ><span data-category="06-08"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-09" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-09">Tuesday JS</a
+                  ><span data-category="06-09"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-10" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-10"
+                    >WOLF RPGエディター</a
+                  ><span data-category="06-10"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-11" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-11">Yu-ris</a
+                  ><span data-category="06-11"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-12" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-12"
+                    >コミックメーカー</a
+                  ><span data-category="06-12"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-13" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-13">ティラノ系</a
+                  ><span data-category="06-13"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-14" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-14">ツクール系</a
+                  ><span data-category="06-14"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-15" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-15">吉里吉里</a
+                  ><span data-category="06-15"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="06-16" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=06-16">その他</a
+                  ><span data-category="06-16"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- プラットフォーム -->
+          <div class="category-area">
+            <b>
+              <a href="./ps_search.cgi?act=cat&cat=05">プラットフォーム</a
+              ><span data-category="05"></span
+            ></b>
+            <div class="category-all">
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="05-01" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=05-01">Windows</a
+                  ><span data-category="05-01"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="05-02" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=05-02">Mac</a
+                  ><span data-category="05-02"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="05-03" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=05-03">ブラウザ</a
+                  ><span data-category="05-03"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="05-04" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=05-04">アプリ</a
+                  ><span data-category="05-04"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="05-05" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=05-05">そのほか</a
+                  ><span data-category="05-05"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 主人公傾向 -->
+          <div class="category-area">
+            <b><a href="./ps_search.cgi?act=cat&cat=08">主人公傾向</a></b>
+            <div class="category-all">
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="08-01" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=08-01">名前変更可</a
+                  ><span data-category="08-01"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="08-02" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=08-02">名前変更不可</a
+                  ><span data-category="08-02"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="08-03" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=08-03">個性あり</a
+                  ><span data-category="08-03"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="08-04" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=08-04">個性なし</a
+                  ><span data-category="08-04"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="08-05" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=08-05">顔あり</a
+                  ><span data-category="08-05"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="08-06" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=08-06">顔なし</a
+                  ><span data-category="08-06"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="08-07" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=08-07">顔表示選択可</a
+                  ><span data-category="08-07"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="08-08" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=08-08">性自認選択可</a
+                  ><span data-category="08-08"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="08-09" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=08-09">性自認選択不可</a
+                  ><span data-category="08-09"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="08-10" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=08-10">無性別</a
+                  ><span data-category="08-10"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="08-11" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=08-11">性別不詳</a
+                  ><span data-category="08-11"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- シナリオ傾向 -->
+          <div class="category-area">
+            <b><a href="./ps_search.cgi?act=cat&cat=09">シナリオ傾向</a></b>
+            <div class="category-all">
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="09-01" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=09-01">コメディー</a
+                  ><span data-category="09-01"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="09-02" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=09-02">ロマンス</a
+                  ><span data-category="09-02"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="09-03" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=09-03">ほのぼの</a
+                  ><span data-category="09-03"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="09-04" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=09-04">ギャグ</a
+                  ><span data-category="09-04"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="09-05" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=09-05">ファンタジー</a
+                  ><span data-category="09-05"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="09-06" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=09-06">バトル</a
+                  ><span data-category="09-06"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="09-07" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=09-07">シリアス</a
+                  ><span data-category="09-07"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="09-08" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=09-08">サスペンス</a
+                  ><span data-category="09-08"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="09-09" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=09-09">ホラー</a
+                  ><span data-category="09-09"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="09-10" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=09-10">ミステリー</a
+                  ><span data-category="09-10"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="09-11" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=09-11">インモラル</a
+                  ><span data-category="09-11"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="09-12" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=09-12">SF</a
+                  ><span data-category="09-12"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="09-13" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=09-13">歴史</a
+                  ><span data-category="09-13"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="09-14" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=09-14">伝記</a
+                  ><span data-category="09-14"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="09-15" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=09-15">ネタ</a
+                  ><span data-category="09-15"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- シチュエーション傾向 -->
+          <div class="category-area-long">
+            <b
+              ><a href="./ps_search.cgi?act=cat&cat=10"
+                >シチュエーション傾向</a
+              ></b
+            >
+            <div class="category-all">
+              <div class="category-area">
+                <div class="category-su">
+                  <input type="checkbox" name="cat" value="10-01" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-01">舞台</a
+                    ><span data-category="10-01"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-01-01" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-01-01">現代</a
+                    ><span data-category="10-01-01"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-01-02" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-01-02">未来</a
+                    ><span data-category="10-01-02"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-01-03" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-01-03">異世界</a
+                    ><span data-category="10-01-03"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-01-04" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-01-04">洋風</a
+                    ><span data-category="10-01-04"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-01-05" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-01-05">和風</a
+                    ><span data-category="10-01-05"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-01-06" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-01-06">中華</a
+                    ><span data-category="10-01-06"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-01-07" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-01-07">学園</a
+                    ><span data-category="10-01-07"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="category-area">
+                <div class="category-su">
+                  <input type="checkbox" name="cat" value="10-02" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-02">関係性</a
+                    ><span data-category="10-02"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-02-01" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-02-01"
+                      >愛され・溺愛</a
+                    ><span data-category="10-02-01"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-02-02" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-02-02">嫌われ</a
+                    ><span data-category="10-02-02"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-02-03" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-02-03">多角関係</a
+                    ><span data-category="10-02-03"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-02-04" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-02-04">ヤンデレ</a
+                    ><span data-category="10-02-04"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-02-05" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-02-05">逆ハーレム</a
+                    ><span data-category="10-02-05"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-02-06" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-02-06">恋人</a
+                    ><span data-category="10-02-06"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-02-07" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-02-07"
+                      >攻略対象が一人</a
+                    ><span data-category="10-02-07"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-02-08" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-02-08">主人公優位</a
+                    ><span data-category="10-02-08"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="10-02-09" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=10-02-09"
+                      >寝取り・寝取られ</a
+                    ><span data-category="10-02-09"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 追加要素 -->
+          <div class="category-area">
+            <b><a href="./ps_search.cgi?act=cat&cat=11">追加要素</a></b>
+            <div class="category-all">
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="11-01" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=11-01">ボイス</a
+                  ><span data-category="11-01"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="11-02" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=11-02">目パチ・口パク</a
+                  ><span data-category="11-02"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="11-03" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=11-03"
+                    >オリジナル主題歌</a
+                  ><span data-category="11-03"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="11-04" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=11-04">オリジナル音楽</a
+                  ><span data-category="11-04"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="11-05" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=11-05">ムービー</a
+                  ><span data-category="11-05"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="11-06" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=11-06">攻略情報</a
+                  ><span data-category="11-06"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="11-07" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=11-07">AI使用</a
+                  ><span data-category="11-07"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 対応言語 -->
+          <div class="category-area">
+            <b><a href="./ps_search.cgi?act=cat&cat=12">対応言語</a></b>
+            <div class="category-all">
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="12-01" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=12-01"
+                    >日本語(にほんご)</a
+                  ><span data-category="12-01"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="12-02" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=12-02">English(英語)</a
+                  ><span data-category="12-02"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="12-03" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=12-03">简体字(簡体字)</a
+                  ><span data-category="12-03"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="12-04" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=12-04">繁體字(繁体字)</a
+                  ><span data-category="12-04"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="12-05" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=12-05">한국어(韓国語)</a
+                  ><span data-category="12-05"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="12-06" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=12-06"
+                    >Deutsch(ドイツ語)</a
+                  ><span data-category="12-06"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="12-07" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=12-07">そのほか</a
+                  ><span data-category="12-07"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 許可状況 -->
+          <div class="category-area">
+            <b><a href="./ps_search.cgi?act=cat&cat=13">許可状況</a></b>
+            <div class="category-all">
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="13-01" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=13-01">実況可</a
+                  ><span data-category="13-01"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="13-02" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=13-02">実況不可</a
+                  ><span data-category="13-02"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="13-03" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=13-03">配信可</a
+                  ><span data-category="13-03"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="13-04" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=13-04">配信不可</a
+                  ><span data-category="13-04"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="13-05" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=13-05">レビュー可</a
+                  ><span data-category="13-05"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="13-06" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=13-06">レビュー不可</a
+                  ><span data-category="13-06"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 関連サイト -->
+          <div class="category-area">
+            <b><a href="./ps_search.cgi?act=cat&cat=14">関連サイト</a></b>
+            <div class="category-all">
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="14-01" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=14-01">素材配布</a
+                  ><span data-category="14-01"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="14-02" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=14-02"
+                    >プラグイン・ツール配布</a
+                  ><span data-category="14-02"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="14-03" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=14-03">攻略・レビュー</a
+                  ><span data-category="14-03"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="14-04" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=14-04">情報</a
+                  ><span data-category="14-04"></span>
+                </div>
+              </div>
+              <div class="category-su">
+                <input type="checkbox" name="cat" value="14-06" />
+                <div class="category-name">
+                  <a href="./ps_search.cgi?act=cat&cat=14-06">ツール解説</a
+                  ><span data-category="14-06"></span>
+                </div>
+              </div>
+              <br />
+            </div>
+            <div align="center"></div>
+          </div>
+          <!-- 年齢制限 -->
+          <div class="category-area-long">
+            <b><a href="./ps_search.cgi?act=cat&cat=03">年齢制限</a></b>
+            <div class="category-all">
+              <div>
+                <div class="category-su">
+                  <input type="checkbox" name="cat" value="03-01" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-01">性表現系</a
+                    ><span data-category="03-01"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-01-01" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-01-01">G(CERO A)</a
+                    ><span data-category="03-01-01"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-01-02" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-01-02"
+                      >R12+(CERO B)</a
+                    ><span data-category="03-01-02"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-01-03" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-01-03"
+                      >R15+(CERO C)</a
+                    ><span data-category="03-01-03"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-01-04" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-01-04"
+                      >R17+(CERO D)</a
+                    ><span data-category="03-01-04"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-01-05" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-01-05"
+                      >R18+(CERO Z)</a
+                    ><span data-category="03-01-05"></span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="category-su">
+                  <input type="checkbox" name="cat" value="03-02" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-02">暴力表現</a
+                    ><span data-category="03-02"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-02-01" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-02-01">G(CERO A)</a
+                    ><span data-category="03-02-01"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-02-02" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-02-02"
+                      >R12+(CERO B)</a
+                    ><span data-category="03-02-02"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-02-03" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-02-03"
+                      >R15+(CERO C)</a
+                    ><span data-category="03-02-03"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-02-04" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-02-04"
+                      >R17+(CERO D)</a
+                    ><span data-category="03-02-04"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-02-05" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-02-05"
+                      >R18+(CERO Z)</a
+                    ><span data-category="03-02-05"></span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="category-su">
+                  <input type="checkbox" name="cat" value="03-03" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-03"
+                      >反社会的行為表現</a
+                    ><span data-category="03-03"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-03-01" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-03-01">G(CERO A)</a
+                    ><span data-category="03-03-01"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-03-02" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-03-02"
+                      >R12+(CERO B)</a
+                    ><span data-category="03-03-02"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-03-03" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-03-03"
+                      >R15+(CERO C)</a
+                    ><span data-category="03-03-03"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-03-04" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-03-04"
+                      >R17+(CERO D)</a
+                    ><span data-category="03-03-04"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-03-05" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-03-05"
+                      >R18+(CERO Z)</a
+                    ><span data-category="03-03-05"></span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="category-su">
+                  <input type="checkbox" name="cat" value="03-04" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-04"
+                      >言語・思想関連表現系</a
+                    ><span data-category="03-04"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-04-01" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-04-01">G(CERO A)</a
+                    ><span data-category="03-04-01"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-04-02" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-04-02"
+                      >R12+(CERO B)</a
+                    ><span data-category="03-04-02"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-04-03" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-04-03"
+                      >R15+(CERO C)</a
+                    ><span data-category="03-04-03"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-04-04" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-04-04"
+                      >R17+(CERO D)</a
+                    ><span data-category="03-04-04"></span>
+                  </div>
+                </div>
+                <div class="category-su small-category">
+                  <input type="checkbox" name="cat" value="03-04-05" />
+                  <div class="category-name">
+                    <a href="./ps_search.cgi?act=cat&cat=03-04-05"
+                      >R18+(CERO Z)</a
+                    ><span data-category="03-04-05"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div align="right"></div>
+          <br />
         </div>
-        <div class="enter">
-            <a href="./ps/index.html">ENTER</a>
-        </div>
+      </div>
     </main>
-</body>
+  </body>
+  <footer>
+    <p>
+      <b>創作乙女ゲームサーチ</b>
+      <br />
+      管理人 994[<a href="ps_admin.cgi">管理</a>]
+    </p>
+    <a href="http://dream.lib.net/room/" target="_blank"
+      >Power Search by The Room</a
+    ><br />
+  </footer>
 </html>
