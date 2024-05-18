@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((data) => {
         displayCategoryCounts(data);
+        set_total_count(data);
       })
       .catch((error) => console.error("Error:", error));
   });
@@ -15,6 +16,17 @@ document.addEventListener("DOMContentLoaded", function () {
       category.outerText = "(" + data[category.dataset.category] + ")";
     });
   }
+  
+  // 検索件数表示する関数
+  function set_total_count(data){
+      const count = data["00"];
+      const resultsDiv = document.getElementById('all-count');
+      const link = document.createElement('a');
+      link.textContent = `${count} 件のサイトが登録されています`;
+      link.href = `./ps_search.cgi?act=all`;
+      resultsDiv.appendChild(link);
+  }
+  
   // カテゴリ検索処理
   function set() {
     var formtagsObj = new Array();
